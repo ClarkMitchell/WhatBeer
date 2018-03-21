@@ -14,6 +14,11 @@
           {{ params }}
         </v-card-title>
         <v-card-text />
+        <img
+          src="~/static/icon-medium.png"
+          alt="Beer mug icon"
+          class="mb-5"
+        >
         <v-card-actions>
           <v-spacer />          
           <v-btn

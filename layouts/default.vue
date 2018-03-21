@@ -5,7 +5,7 @@
       fixed
       app
       dark
-      clipped
+      temporary
     >
       <v-list>
         <v-list-tile
@@ -29,7 +29,6 @@
       app
       dark
       class="primary"
-      :clipped-left="clipped"
     >
       <v-toolbar-side-icon @click="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
@@ -48,7 +47,7 @@
     </v-content>
     <v-navigation-drawer
       temporary
-      :right="right"
+      right
       v-model="rightDrawer"
       fixed
     >
@@ -62,7 +61,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :fixed="fixed"
+      fixed
       app
       dark
       class="primary"
@@ -76,15 +75,11 @@
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
+      drawer: false,
       items: [
         { icon: 'home', title: 'Home', to: '/' },
         { icon: 'search', title: 'Search', to: '/search' },
       ],
-      miniVariant: false,
-      right: true,
       rightDrawer: false,
       title: 'What Beer',
     };
