@@ -1,0 +1,1 @@
+{"name":"WhatBeer","short_name":"WhatBeer","description":"A Vue, Nuxt, and Vuetify app utilizing the RateBeer GraphQL API.","publicPath":"/WhatBeer//_nuxt/","icons":[],"start_url":"/WhatBeer/?standalone=true","display":"standalone","background_color":"#ffffff","theme_color":"#00796B","lang":"en"}
