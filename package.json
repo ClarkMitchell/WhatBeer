@@ -15,9 +15,17 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^3.0.5",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/pwa": "^2.0.8",
+    "apollo-cache-inmemory": "^1.1.11",
+    "apollo-client": "^2.2.7",
+    "apollo-link": "^1.2.1",
+    "apollo-link-http": "^1.5.3",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
     "nuxt": "^1.0.0",
+    "vue-apollo": "^3.0.0-beta.5",
     "vuetify": "^0.17.3"
   },
   "devDependencies": {
@@ -27,6 +35,7 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1"
+    "stylus-loader": "^3.0.1",
+    "postcss-loader": "2.1.1"
   }
 }
