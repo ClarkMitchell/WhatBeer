@@ -9,3 +9,5 @@ npm-debug.log
 
 # PWA
 sw.*
+
+yarn-error.log
