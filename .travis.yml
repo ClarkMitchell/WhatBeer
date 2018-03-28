@@ -1,26 +1,25 @@
 language: node_js
 node_js:
-  - "8"
-
+- '8'
+env:
+  global:
+    BASE_URL: https://api.ratebeer.com/v1/api/graphql
+    secure: q9+AGfdro4fJ6/r1AYAcDugSWu2kffdUp7hxZn7G/ekamckZgK+zPJJlPoLf/mQjcfe4qrSGFXrVLHG80ShlbQdI/CaAzPn3O3W1kpW7BNQmTmjg1Lg8gMBAwlfVbE+j6Hj7EcfVS/qTP4VriabUKEBUyjX0QTuoWXg9aRf/PhG8smaarg1Lx2xYhMfp43zPOEGhgkwcm8XPOJdLYvtsjxvl86sAuIo8pLwIYdA8F1GW+QLLJLSrw/+qoVl8f+okV6xFKM7Zcu5V8EiIu9n8wYsdEuUAFmIvDqRodf5bvnzGavgrXq6dZmv3alNMQDxujN9fMP/gviXF1yhRbqNS1cs4k3NKZpJzSIl8LQ2hNn0eq2jXBDuOjUE+nMUPfoel9AgZG7X5amLQn0uZ24LF3jrNOEk+RDoJMbsA8umMSsUPnpOyRuTDwqCzy4OyQis9Ct7SBsEn8jVU95m2GlyDLNxcmFoN6UbylRkpb0xKX+CpN6D3mwYEAW0USutjrMGfqsd8iF5vS4BD+AOxIO6qDw0i1rJ9R/RL6OmiG6/bILcURHgXdy1Oi3UtDBEF3Bt3gCuo33eTU1q+k/hxfwgmdU/K5TaipQd0uMRq8RiD3yvRuJIs+ujTyBfXQS/EZgmYsWWt3pj4lNHRIB++KLC0kjiv4bivOj4QndQqqnje7Xs=
 cache:
   directories:
-    - "node_modules"
-
+  - node_modules
 branches:
   only:
   - master
-
 install:
-  - yarn install
-  - yarn run generate:gh-pages
-
+- yarn install
+- yarn run generate:gh-pages
 script:
-  - echo "Skipping tests"
-
+- echo "Skipping tests"
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GITHUB_ACCESS_TOKEN
+  github-token: "$GITHUB_ACCESS_TOKEN"
   target-branch: gh-pages
   local-dir: dist
   on:
