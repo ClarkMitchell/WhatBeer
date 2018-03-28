@@ -1,9 +1,6 @@
 import Vuex from 'vuex';
 import axios from 'axios';
 
-const endpoint = 'https://api.ratebeer.com/v1/api/graphql';
-const key = 'OupyrrhUWY1od5kLX6MKRp64LNLq5Dq6TKJHXkRa';
-
 const createStore = () => {
     return new Vuex.Store({
         state: {
@@ -12,7 +9,7 @@ const createStore = () => {
         },
         mutations: {
             setBeers(state, beers) {
-                state.beers = beers;
+                state.beers = [...(new Set(state.beers.concat(beers)))];
             },
             setCurrentBeer(state, beer) {
                 state.currentBeer = beer;
@@ -21,10 +18,10 @@ const createStore = () => {
         actions: {
             async getBeersFromApi({ commit }, beer) {
                 let data = await axios({
-                    url: endpoint,
+                    url: process.env.BASE_URL,
                     method: 'post',
                     headers: {
-                        'x-api-key': key
+                        'x-api-key': process.env.API_KEY
                     },
                     data: {
                       query: `
@@ -44,10 +41,10 @@ const createStore = () => {
             },
             async getBeer({ commit }, id) {
                 let data = await axios({
-                    url: endpoint,
+                    url: process.env.BASE_URL,
                     method: 'post',
                     headers: {
-                        'x-api-key': key
+                        'x-api-key': process.env.API_KEY
                     },
                     data: {
                         query:`
