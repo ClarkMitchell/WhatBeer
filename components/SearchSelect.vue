@@ -26,27 +26,25 @@ export default {
       items: [],
       search: null,
       select: [],
-      beers: ['1', '2', '3'],
+      beers: [],
     };
   },
   watch: {
-    search(val) {
-      val && this.querySelections(val);
+    search(beer) {
+      beer && this.querySelections(beer);
     },
-    select: function(beer) {
-      this.$router.push('/beer/' + beer);
+    select: function(beerName) {
+      const beer = this.beers.find(beer => beer.name == beerName);
+      this.$router.push('/beer/' + beer.id);
     },
   },
   methods: {
-    querySelections(v) {
+    querySelections(beer) {
       this.loading = true;
-      // Simulated ajax query
-      setTimeout(() => {
-        this.items = this.beers.filter(e => {
-          return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1;
-        });
-        this.loading = false;
-      }, 500);
+      this.$store.dispatch('getBeersFromApi', beer);
+      this.beers = this.$store.getters.getBeers;
+      this.items = this.beers.map(beer => beer.name);
+      this.loading = false;
     },
   },
 };

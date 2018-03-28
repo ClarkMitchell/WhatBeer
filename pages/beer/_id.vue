@@ -11,11 +11,14 @@
     >
       <v-card>
         <v-card-title class="headline">
-          {{ params }}
+          {{ beer.name }}
         </v-card-title>
-        <v-card-text />
+        <v-card-text>
+          {{ beer.description }}
+          {{ beer.description }}                    
+        </v-card-text>
         <img
-          src="~/static/icon-medium.png"
+          :src="beer.imageUrl"
           alt="Beer mug icon"
           class="mb-5"
         >
@@ -39,6 +42,10 @@ export default {
   validate({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id);
+  },
+  created() {
+    this.$store.dispatch('getBeer', this.$route.params.id);
+    this.beer = this.$store.getters.getCurrentBeer;
   },
 };
 </script>
