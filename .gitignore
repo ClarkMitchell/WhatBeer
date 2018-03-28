@@ -11,3 +11,4 @@ npm-debug.log
 sw.*
 
 yarn-error.log
+.env

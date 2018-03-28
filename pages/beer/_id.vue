@@ -14,8 +14,7 @@
           {{ beer.name }}
         </v-card-title>
         <v-card-text>
-          {{ beer.description }}
-          {{ beer.description }}                    
+          {{ beer.description }}               
         </v-card-text>
         <img
           :src="beer.imageUrl"
@@ -39,6 +38,11 @@
 
 <script>
 export default {
+  computed: {
+    beer: function() {
+      return this.$store.getters.getCurrentBeer;
+    },
+  },
   validate({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id);
