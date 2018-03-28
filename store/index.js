@@ -14,7 +14,7 @@ const createStore = () => {
             setBeers(state, beers) {
                 state.beers = beers;
             },
-            setCurrentBeer(beer) {
+            setCurrentBeer(state, beer) {
                 state.currentBeer = beer;
             }
         },
@@ -41,6 +41,32 @@ const createStore = () => {
                     }
                 });
                 commit('setBeers', data.data.data.beerSearch.items);
+            },
+            async getBeer({ commit }, id) {
+                let data = await axios({
+                    url: endpoint,
+                    method: 'post',
+                    headers: {
+                        'x-api-key': key
+                    },
+                    data: {
+                        query:`
+                            query {
+                                beer(id: ${id}) {
+                                    name,
+                                    id,
+                                    description,
+                                    abv,
+                                    ibu,
+                                    labels,
+                                    overallScore,
+                                    imageUrl
+                                }
+                            }
+                        `
+                    }
+                });
+                commit('setCurrentBeer', data.data.data.beer);
             }
         },
         getters: {
