@@ -35,6 +35,7 @@ export default {
     },
     select: function(beerName) {
       const beer = this.beers.find(beer => beer.name == beerName);
+      this.$store.commit('setCurrentBeer', beer);
       this.$router.push('/beer/' + beer.id);
     },
   },
