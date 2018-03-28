@@ -58,6 +58,10 @@ module.exports = {
     '@nuxtjs/pwa',
   ],
 
+  env: {
+    BASE_URL: process.env.BASE_URL
+  },
+
   /*
   ** Axios module configuration
   */
