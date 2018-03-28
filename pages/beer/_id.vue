@@ -6,31 +6,49 @@
   >
     <v-flex
       xs12
-      sm8
-      md6
     >
-      <v-card>
-        <v-card-title class="headline">
-          {{ beer.name }}
-        </v-card-title>
-        <v-card-text>
-          {{ beer.description }}               
-        </v-card-text>
-        <img
-          :src="beer.imageUrl"
-          alt="Beer mug icon"
-          class="mb-5"
+      <v-card
+        hover
+        raised
+      >
+        <v-container
+          fluid
+          grid-list-xl
         >
+          <v-layout row>
+            <v-flex xs9>
+              <div>
+                <v-card-title primary-title>
+                  <div class="headline">
+                    {{ beer.name }}
+                  </div>
+                </v-card-title>
+              </div>
+            </v-flex>
+            <v-flex xs5>
+              <v-card-media
+                :src="beer.imageUrl"
+                height="125px"
+                contain
+              />
+            </v-flex>
+          </v-layout>
+        </v-container>
         <v-card-actions>
-          <v-spacer />          
+          <v-spacer />
           <v-btn
-            color="primary"
-            nuxt
-            to="/search"
+            icon
+            hover
+            @click.native="show = !show"
           >
-            Search
+            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
           </v-btn>
         </v-card-actions>
+        <v-slide-y-transition>
+          <v-card-text v-show="show">
+            {{ beer.description }}
+          </v-card-text>
+        </v-slide-y-transition>
       </v-card>
     </v-flex>
   </v-layout>
@@ -38,6 +56,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      show: false,
+    };
+  },
   computed: {
     beer: function() {
       return this.$store.getters.getCurrentBeer;
