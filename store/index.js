@@ -55,9 +55,11 @@ const createStore = () => {
                                     description,
                                     abv,
                                     ibu,
-                                    labels,
                                     overallScore,
-                                    imageUrl
+                                    imageUrl,
+                                    brewer {
+                                        name
+                                    }
                                 }
                             }
                         `
@@ -72,7 +74,7 @@ const createStore = () => {
             },
             getBeers: state => {
                 return state.beers;
-            }
+            },
         }
     })
 }

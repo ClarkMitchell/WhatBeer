@@ -1,69 +1,36 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      v-model="drawer"
-      fixed
-      app
-      dark
-      temporary
-    >
-      <v-list>
-        <v-list-tile
-          router
-          :to="item.to"
-          :key="i"
-          v-for="(item, i) in items"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"/>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
     <v-toolbar
       fixed
       app
       dark
+      extended
       class="primary"
     >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
+      <v-container>
+        <v-toolbar-title>WhatBeer</v-toolbar-title>
+        <v-spacer />
+        <SearchSelect class="my=3"/>
+      </v-container>
     </v-toolbar>
     <v-content>
       <v-container>
         <nuxt />
+        <v-flex
+          text-xs-center
+          class="mx-auto"
+        >
+          <img
+            src="~/static/icon-medium.png"
+            alt="Beer mug icon"
+            class="my-5"
+          >
+        </v-flex>
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      right
-      v-model="rightDrawer"
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer
       fixed
       app
-      dark
       class="primary"
     >
       <span>&copy; 2018 Clark Mitchell</span>
@@ -72,6 +39,8 @@
 </template>
 
 <script>
+import SearchSelect from '~/components/SearchSelect.vue';
+
 export default {
   data() {
     return {
@@ -83,6 +52,9 @@ export default {
       rightDrawer: false,
       title: 'What Beer',
     };
+  },
+  components: {
+    SearchSelect,
   },
 };
 </script>

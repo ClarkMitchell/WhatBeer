@@ -22,7 +22,37 @@
                   <div class="headline">
                     {{ beer.name }}
                   </div>
+                  <div>
+                    {{ this.beer.brewer.name }}
+                  </div>
                 </v-card-title>
+                <div class="lineItem">
+                  <p>
+                    Overall Score: 
+                  </p>
+                  <h2
+                    class="score"
+                    :style="hue"
+                  >
+                    {{ score }}
+                  </h2>
+                </div>
+                <div class="lineItem">
+                  <p>
+                    ABV: 
+                  </p>
+                  <h2>
+                    {{ abv }}%
+                  </h2>
+                </div>
+                <div class="lineItem">
+                  <p>
+                    IBU: 
+                  </p>
+                  <h2>
+                    {{ beer.ibu }}
+                  </h2>
+                </div>                
               </div>
             </v-flex>
             <v-flex xs5>
@@ -65,6 +95,16 @@ export default {
     beer: function() {
       return this.$store.getters.getCurrentBeer;
     },
+    score: function() {
+      return Math.round(this.beer.overallScore);
+    },
+    abv: function() {
+      return Math.floor(this.beer.abv);
+    },
+    hue: function() {
+      const hue = Math.floor(this.score * 0.84);
+      return `color: hsl(${hue}, 100%, 50%);`;
+    },
   },
   validate({ params }) {
     // Must be a number
@@ -76,3 +116,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.overallScore {
+  display: inline;
+}
+
+.lineItem p,
+h2 {
+  display: inline-block;
+  margin: 5px;
+}
+</style>

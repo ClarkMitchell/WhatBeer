@@ -1,21 +1,20 @@
 <template>
-  <v-container fluid>
-    <v-layout>
-      <v-flex>
-        <v-select
-          label="Search Beers"
-          autocomplete
-          :loading="loading"
-          cache-items
-          chips
-          :items="items"
-          :rules="[() => select.length > 0 || 'You must choose at least one']"
-          :search-input.sync="search"
-          v-model="select"
-        />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-flex
+    xs10
+    offset-xs1
+  >
+    <v-select
+      label="Search Beers"
+      autocomplete
+      :loading="loading"
+      cache-items
+      chips
+      :items="items"
+      :rules="[() => select.length > 0]"
+      :search-input.sync="search"
+      v-model="select"
+    />
+  </v-flex>
 </template>
 
 <script>
