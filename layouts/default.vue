@@ -33,7 +33,7 @@
       app
       class="primary"
     >
-      <span>&copy; 2018 Clark Mitchell</span>
+      <span class="white--text">&copy; 2018 - Clark Mitchell</span>
     </v-footer>
   </v-app>
 </template>

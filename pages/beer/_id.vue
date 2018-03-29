@@ -22,10 +22,10 @@
                   <div class="headline">
                     {{ beer.name }}
                   </div>
-                  <div>
-                    {{ this.beer.brewer.name }}
-                  </div>
                 </v-card-title>
+                <div class="lineItem">
+                  {{ this.beer.brewer.name }}
+                </div>
                 <div class="lineItem">
                   <p>
                     Overall Score: 
