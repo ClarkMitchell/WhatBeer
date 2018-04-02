@@ -29,7 +29,12 @@
       app
       class="primary"
     >
-      <span class="white--text">&copy; 2018 - Clark Mitchell</span>
+      <span class="white--text">
+        &copy; 2018 - 
+        <a href="https://clarkmitchell.github.io">
+          Clark Mitchell
+        </a>
+      </span>
     </v-footer>
   </v-app>
 </template>
