@@ -8,7 +8,6 @@
       autocomplete
       :loading="loading"
       cache-items
-      chips
       :items="items"
       :rules="[() => select.length > 0]"
       :search-input.sync="search"

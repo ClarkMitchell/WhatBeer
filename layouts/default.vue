@@ -4,17 +4,13 @@
       fixed
       app
       dark
-      extended
       class="primary"
     >
-      <v-container>
-        <v-toolbar-title>WhatBeer</v-toolbar-title>
-        <v-spacer />
-        <SearchSelect class="my=3"/>
-      </v-container>
+      <v-toolbar-title>WhatBeer</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container>
+        <SearchSelect class="my-3"/>        
         <nuxt />
         <v-flex
           text-xs-center
